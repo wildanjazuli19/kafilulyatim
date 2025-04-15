@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yayasan Peduli Anak Yatim</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #45a049;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .programs {
+            background-color: #f9f9f9;
+        }
+        
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .program-details {
+            padding: 20px;
+        }
+        
+        .program-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+        
+        .testimonials {
+            text-align: center;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .gallery-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .donate {
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        .donate-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .donate-option {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        
+        .donate-option h3 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        
+        .donate-option p {
+            margin-bottom: 20px;
+        }
+        
+        .contact {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item i {
+            background-color: #4CAF50;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #4CAF50;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4CAF50;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Yayasan Peduli Anak Yatim</div>
+                <ul class="nav-links">
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#tentang">Tentang Kami</a></li>
+                    <li><a href="#program">Program</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                    <li><a href="#donasi">Donasi</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="beranda">
+        <div class="container">
+            <h1>Wujudkan Harapan Anak Yatim</h1>
+            <p>Bersama kita bisa memberikan kesempatan lebih baik untuk masa depan anak-anak yatim Indonesia. Mari berbagi kebahagiaan dan membangun harapan baru!</p>
+            <a href="#donasi" class="btn">Donasi Sekarang</a>
+        </div>
+    </section>
+
+    <section id="tentang" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang Kami</h2>
+                <p>Mengenal lebih dekat Yayasan Peduli Anak Yatim dan visi misi kami dalam membantu anak-anak yatim di Indonesia.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/api/placeholder/600/400" alt="Anak-anak yatim bersama pengurus yayasan">
+                </div>
+                <div class="about-text">
+                    <h3>Sejarah Yayasan</h3>
+                    <p>Yayasan Peduli Anak Yatim didirikan pada tahun 2010 oleh sekelompok relawan yang memiliki kepedulian tinggi terhadap nasib anak-anak yatim di Indonesia. Berawal dari kegiatan sosial kecil-kecilan, kini yayasan kami telah berkembang dan membantu ratusan anak yatim di berbagai daerah.</p>
+                    <p>Dalam perjalanannya, Yayasan Peduli Anak Yatim telah mendapat dukungan dari berbagai pihak termasuk donatur individu, perusahaan, dan lembaga sosial lainnya.</p>
+                    <h3>Visi & Misi</h3>
+                    <p><strong>Visi:</strong> Menjadi yayasan terdepan dalam memberikan pelayanan dan pendampingan terhadap anak yatim di Indonesia.</p>
+                    <p><strong>Misi:</strong></p>
+                    <p>1. Memberikan pendidikan berkualitas untuk anak-anak yatim</p>
+                    <p>2. Memenuhi kebutuhan dasar anak yatim termasuk sandang, pangan, dan papan</p>
+                    <p>3. Memberikan bimbingan spiritual dan pembinaan karakter</p>
+                    <p>4. Mempersiapkan anak yatim agar mandiri dan siap menghadapi masa depan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="program" class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Kami</h2>
+                <p>Berbagai program yang kami kembangkan untuk membantu anak-anak yatim menggapai masa depan yang lebih baik.</p>
+            </div>
+            <div class="program-cards">
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="/api/placeholder/400/320" alt="Program Pendidikan">
+                    </div>
+                    <div class="program-details">
+                        <h3>Program Pendidikan</h3>
+                        <p>Memberikan beasiswa pendidikan mulai dari tingkat dasar hingga perguruan tinggi, termasuk perlengkapan sekolah dan bimbingan belajar.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="/api/placeholder/400/320" alt="Program Kesehatan">
+                    </div>
+                    <div class="program-details">
+                        <h3>Program Kesehatan</h3>
+                        <p>Memastikan anak-anak yatim mendapatkan pemeriksaan kesehatan rutin dan perawatan medis yang dibutuhkan.</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="/api/placeholder/400/320" alt="Program Keterampilan">
+                    </div>
+                    <div class="program-details">
+                        <h3>Program Keterampilan</h3>
+                        <p>Pelatihan berbagai keterampilan hidup dan keterampilan vokasi untuk mempersiapkan kemandirian anak yatim di masa depan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimoni</h2>
+                <p>Cerita inspiratif dari anak-anak yatim yang terbantu dan para donatur yang bergabung dengan kami.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"Berkat bantuan dari Yayasan Peduli Anak Yatim, saya bisa melanjutkan pendidikan hingga ke perguruan tinggi. Kini saya sudah bekerja dan bisa membantu adik-adik yang masih di yayasan."</p>
+                    <div class="testimonial-author">Ahmad Rizki, Alumni Yayasan</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Donasi rutin yang saya berikan mungkin tidak seberapa, tapi saya senang bisa ikut berkontribusi dalam membantu anak-anak yang membutuhkan. Transparan dan profesional, itulah kesan saya terhadap Yayasan Peduli Anak Yatim."</p>
+                    <div class="testimonial-author">Ibu Mawar, Donatur Tetap</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeri" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeri Kegiatan</h2>
+                <p>Dokumentasi kegiatan dan momen berharga bersama anak-anak yatim di yayasan kami.</p>
+            </div>
+            <div class="gallery-images">
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Kegiatan Belajar">
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Kegiatan Olahraga">
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Kegiatan Keagamaan">
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Kegiatan Keterampilan">
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Pembagian Sembako">
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/400/320" alt="Kunjungan Donatur">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donasi" class="donate">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cara Berdonasi</h2>
+                <p>Pilih cara yang paling nyaman untuk Anda dalam berbagi kebaikan dan membantu anak-anak yatim.</p>
+            </div>
+            <div class="donate-options">
+                <div class="donate-option">
+                    <h3>Transfer Bank</h3>
+                    <p>Donasi melalui transfer bank ke rekening resmi Yayasan Peduli Anak Yatim.</p>
+                    <p><strong>Bank Mandiri</strong><br>No. Rek: 123-456-7890<br>A.n. Yayasan Peduli Anak Yatim</p>
+                    <p><strong>Bank BCA</strong><br>No. Rek: 098-765-4321<br>A.n. Yayasan Peduli Anak Yatim</p>
+                </div>
+                <div class="donate-option">
+                    <h3>Donasi Online</h3>
+                    <p>Donasi secara online melalui platform crowdfunding atau e-wallet.</p>
+                    <a href="#" class="btn">Donasi via Kitabisa</a>
+                </div>
+                <div class="donate-option">
+                    <h3>Donasi Barang</h3>
+                    <p>Donasi dalam bentuk barang seperti pakaian, buku, perlengkapan sekolah, dan lainnya.</p>
+                    <a href="#kontak" class="btn">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hubungi Kami</h2>
+                <p>Jika Anda memiliki pertanyaan atau ingin terlibat lebih jauh, jangan ragu untuk menghubungi kami.</p>
+            </div>
+            <div class="contact">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Jl. Harapan Baru No. 123, Kota Jakarta Selatan, DKI Jakarta 12345</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>📞</i>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>+62 21 1234 5678</p>
+                            <p>+62 812 3456 7890</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>✉️</i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@yayanpeduliankyatim.org</p>
+                            <p>donasi@yayanpeduliankyatim.org</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>⏰</i>
+                        <div>
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 08.00 - 16.00 WIB</p>
+                            <p>Sabtu: 09.00 - 13.00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Yayasan Peduli Anak Yatim</h3>
+                    <p>Organisasi nirlaba yang berdedikasi untuk memberikan dukungan dan bantuan kepada anak-anak yatim di Indonesia.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#tentang">Tentang Kami</a></li>
+                        <li><a href="#program">Program</a></li>
+                        <li><a href="#galeri">Galeri</a></li>
+                        <li><a href="#donasi">Donasi</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ikuti Kami</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Berlangganan newsletter kami untuk mendapatkan informasi terbaru.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Masukkan email Anda">
+                        </div>
+                        <button type="submit" class="btn">Berlangganan</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Yayasan Peduli Anak Yatim. Semua Hak Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
